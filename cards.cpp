@@ -443,6 +443,7 @@ bool IntBST::playB(IntBST bst)
             cout << "Alice picked matching card ";
             this->print(curr->info);
             
+            return true;
             break;
         }
         curr = getSuccessorNode(curr->info);
@@ -472,6 +473,7 @@ bool IntBST::playA(IntBST bst)
             cout << "Bob picked matching card ";
             print(curr->info);
 
+            return true;
             break;
         }
         curr = getPredecessorNode(curr->info);
