@@ -32,6 +32,8 @@ class IntBST {
 
     bool playA(IntBST bst);
     bool playB(IntBST bst);
+    void printAll();
+    void print(int value);
 
  private:
 

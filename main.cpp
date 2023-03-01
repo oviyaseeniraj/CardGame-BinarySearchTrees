@@ -109,5 +109,12 @@ int main(int argv, char** argc){
   {
     bstAlice.playB(bstBob);
   }
+
+  cout << "Alice's cards:" << endl;
+  bstAlice.printAll();
+
+  cout << "Bob's cards:" << endl;
+  bstBob.printAll();
+
   return 0;
 }

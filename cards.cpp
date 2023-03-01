@@ -434,12 +434,15 @@ bool IntBST::playB(IntBST bst)
         curr = curr->left;
     }
 
-    while (curr && getSuccessorNode(curr->info))
+    while (curr)
     {
         if (bst.contains(curr->info))
         {
             bst.remove(curr->info);
             this->remove(curr->info);
+            cout << "Alice picked matching card ";
+            this->print(curr->info);
+            
             break;
         }
         curr = getSuccessorNode(curr->info);
@@ -459,14 +462,73 @@ bool IntBST::playA(IntBST bst)
         curr = curr->right;
     }
 
-    while (curr && getPredecessorNode(curr->info))
+    while (curr)
     {
         if (bst.contains(curr->info))
         {
             bst.remove(curr->info);
             this->remove(curr->info);
+
+            cout << "Bob picked matching card ";
+            print(curr->info);
+
             break;
         }
         curr = getPredecessorNode(curr->info);
     }
 }
+
+    void IntBST::printAll()
+    {
+        if (!this->root)
+        {
+            return;
+        }
+
+        Node* curr = this->root;
+        print(curr->info);
+        while (curr->left)
+        {
+            curr = curr->left;
+            print(curr->info);
+        }
+    }
+
+    void IntBST::print(int value)
+    {
+        if (value / 100 == 1)
+                cout << "c ";
+        else if (value / 100 == 2)
+            cout << "d ";
+        else if (value / 100 == 3)
+            cout << "s ";
+        else if (value / 100 == 4)
+            cout << "h ";
+
+        if (value % 100 == 1)
+            cout << "a" << endl;
+        else if (value % 100 == 2)
+            cout << "2" << endl;
+        else if (value % 100 == 3)
+            cout << "3" << endl;
+        else if (value % 100 == 4)
+            cout << "4" << endl;
+        else if (value % 100 == 5)
+            cout << "5" << endl;
+        else if (value % 100 == 6)
+            cout << "6" << endl;
+        else if (value % 100 == 7)
+            cout << "7" << endl;
+        else if (value % 100 == 8)
+            cout << "8" << endl;
+        else if (value % 100 == 9)
+            cout << "9" << endl;
+        else if (value % 100 == 10)
+            cout << "10" << endl;
+        else if (value % 100 == 11)
+            cout << "j" << endl;
+        else if (value % 100 == 12)
+            cout << "q" << endl;
+        else if (value % 100 == 13)
+            cout << "k" << endl;
+    }
