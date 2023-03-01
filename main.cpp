@@ -26,8 +26,6 @@ int main(int argv, char** argc){
   
   IntBST bstAlice;
   IntBST bstBob;
-  int minA = 1000;
-  int maxB = -1000;
 
   while (getline (cardFile1, line) && (line.length() > 0)){
 
@@ -48,7 +46,7 @@ int main(int argv, char** argc){
     else if (suitStr == "s")
       suit = 300;
     else if (suitStr == "h")
-      suit == 400;
+      suit = 400;
     
     if (cardStr == "a")
       card = suit + 1;
@@ -62,8 +60,6 @@ int main(int argv, char** argc){
       card = suit + stoi(cardStr);
 
     bstAlice.insert(card);
-    if (card < minA)
-      minA = card;
   }
   cardFile1.close();
 
@@ -87,7 +83,7 @@ int main(int argv, char** argc){
     else if (suitStr == "s")
       suit = 300;
     else if (suitStr == "h")
-      suit == 400;
+      suit = 400;
     
     if (cardStr == "a")
       card = suit + 1;
@@ -101,8 +97,6 @@ int main(int argv, char** argc){
       card = suit + stoi(cardStr);
 
     bstBob.insert(card);
-    if (card > maxB)
-        maxB = card;
   }
   cardFile2.close();
   
