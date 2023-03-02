@@ -42,6 +42,11 @@ bool IntBST::insert(int value)
 // recursive helper for insert (assumes n is never 0)
 bool IntBST::insert(int value, Node *n)
 {
+    //if node alr exists
+    if (getNodeFor(value, n))
+    {
+        return false;
+    }
     // base case:
     if (n == nullptr)
     {
@@ -169,12 +174,12 @@ int IntBST::count(Node *n) const
 IntBST::Node *IntBST::getNodeFor(int value, Node *n) const
 {
 
-    if (n == nullptr)
+    if (n == nullptr) // base case: node not found / empty tree
     {
         return NULL;
     }
 
-    if (n->info == value)
+    if (n->info == value) // base case: node found
     {
         return n;
     }
@@ -192,11 +197,7 @@ IntBST::Node *IntBST::getNodeFor(int value, Node *n) const
 // returns true if value is in the tree; false if not
 bool IntBST::contains(int value) const
 {
-    if (getNodeFor(value, this->root) != NULL)
-    {
-        return true;
-    }
-    return false;
+    return (getNodeFor(value, this->root));
 }
 
 // returns the Node containing the predecessor of the given value
@@ -421,7 +422,7 @@ bool IntBST::remove(int value)
     }
 }
 
-bool IntBST::playB(IntBST bst)
+bool IntBST::playB(IntBST& bst)
 {
     if (!this->root)
     {
@@ -438,13 +439,13 @@ bool IntBST::playB(IntBST bst)
     {
         if (bst.contains(curr->info))
         {
-            bst.remove(curr->info);
-            this->remove(curr->info);
             cout << "Alice picked matching card ";
             this->print(curr->info);
+
+            bst.remove(curr->info);
+            this->remove(curr->info);
             
             return true;
-            break;
         }
         curr = getSuccessorNode(curr->info);
     }
@@ -452,13 +453,12 @@ bool IntBST::playB(IntBST bst)
     return false;
 }
 
-bool IntBST::playA(IntBST bst)
+bool IntBST::playA(IntBST& bst)
 {
     if (!this->root)
     {
         return false;
     }
-
     Node* curr = this->root;
     while (curr->right)
     {
@@ -469,14 +469,13 @@ bool IntBST::playA(IntBST bst)
     {
         if (bst.contains(curr->info))
         {
-            bst.remove(curr->info);
-            this->remove(curr->info);
-
             cout << "Bob picked matching card ";
             print(curr->info);
 
+            bst.remove(curr->info);
+            this->remove(curr->info);
+
             return true;
-            break;
         }
         curr = getPredecessorNode(curr->info);
     }
@@ -492,11 +491,15 @@ void IntBST::printAll()
     }
 
     Node* curr = this->root;
-    print(curr->info);
     while (curr->left)
     {
         curr = curr->left;
+    }
+
+    while(curr)
+    {
         print(curr->info);
+        curr = getSuccessorNode(curr->info);
     }
 }
 

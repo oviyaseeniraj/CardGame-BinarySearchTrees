@@ -30,8 +30,8 @@ class IntBST {
     int getSuccessor(int value) const;         // returns the successor value of the given value or 0 if there is none
     bool remove(int value);                    // deletes the Node containing the given value from the tree
 
-    bool playA(IntBST bst);
-    bool playB(IntBST bst);
+    bool playA(IntBST &bst);
+    bool playB(IntBST &bst);
     void printAll();
     void print(int value);
 

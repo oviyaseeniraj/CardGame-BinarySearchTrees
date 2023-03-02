@@ -13,6 +13,7 @@ int main(int argv, char** argc){
     return 1;
   }
   
+
   ifstream cardFile1 (argc[1]);
   ifstream cardFile2 (argc[2]);
   string line;
@@ -105,13 +106,9 @@ int main(int argv, char** argc){
     bstBob.playA(bstAlice);
   }
 
-  while (bstBob.playA(bstAlice))
-  {
-    bstAlice.playB(bstBob);
-  }
-
-  cout << "Alice's cards:" << endl;
+  cout << endl << "Alice's cards:" << endl;
   bstAlice.printAll();
+  cout << endl;
 
   cout << "Bob's cards:" << endl;
   bstBob.printAll();
