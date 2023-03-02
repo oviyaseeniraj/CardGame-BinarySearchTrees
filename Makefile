@@ -5,7 +5,7 @@ CXXFLAGS= -Wall -Wno-uninitialized
 
 
 OBJECTFILES = cards.o main.o
-TARGET = a.out
+TARGET = game
 
 all: ${TARGET}
 
